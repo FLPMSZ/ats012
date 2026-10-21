@@ -34,8 +34,8 @@ jobs:
 
     - name: Subir a API e testar requisição (Integração)
       run: |
-        # O '&' no final roda a API em background para não travar o Runner
-        fastapi run main.py --port 8000 &
+        # Usando uvicorn direto para não depender do CLI padrão
+        uvicorn main:app --port 8000 &
 
         # Dá 3 segundos para o servidor ligar completamente
         sleep 3
